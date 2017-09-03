@@ -5,6 +5,23 @@ You're going to make a todo list according to the provided design. The user shou
 - See the added tasks
 - Be able to clear all items
 
+Please use separate files for HTML, CSS and JS (no inline styling or JavaScript). Also, please use
+the provided web server. To do that, download this repository by clicking "Clone or Download" and
+then "Download ZIP". Unpack it in a nice location.
+To install the web server, (in bash) run `npm install` from inside this directory
+(the directory where the zip file is unpacked). To start the web server, run `npm start`.
+Place your project in the directory `content-base`. You can then include the StyleSheet and
+JavaScript by linking them to `/` like so:
+
+```html
+<link rel="stylesheet" href="/style.css">
+
+<script src="/app.js">
+```
+
+When you visit [http://localhost:8080](http://localhost:8080) in chrome (or whatever internet
+browser you prefer) you'll find the files placed in `content-base`.
+
 ## Assets
 
 Colors:

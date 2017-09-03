@@ -1,0 +1,15 @@
+{
+  "name": "todo-list-tools",
+  "version": "1.0.0",
+  "description": "To install, run `npm install` from inside this directory (the directory where the zip file is unpacked)",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server ./content-base",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Orten.io",
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "^0.10.0"
+  }
+}
