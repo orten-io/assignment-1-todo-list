@@ -1,35 +1,127 @@
 # Todo list
 
 You're going to make a todo list according to the provided design. The user should be able to:
-- Add a task to the list
+- Add tasks to the list
 - See the added tasks
 - Be able to clear all items
 
 Please use separate files for HTML, CSS and JS (no inline styling or JavaScript). Also, please use
-the provided web server. To do that, download this repository by clicking "Clone or Download" and
-then "Download ZIP". Unpack it in a nice location.
-To install the web server, (in bash) run `npm install` from inside this directory
-(the directory where the zip file is unpacked). To start the web server, run `npm start`.
-Place your project in the directory `content-base`. You can then include the StyleSheet and
-JavaScript by linking them to `/` like so:
+the provided web server.
 
-```html
-<link rel="stylesheet" href="/style.css">
+### Setting up the web server
 
-<script src="/app.js">
+Download this repository by clicking "Clone or Download" and then "Download ZIP". Unpack it in a nice
+location. Then, you'll need to use *bash* to install and run the web server. To do so, use the bash `cd`
+command to move into the directory where you unpacked the ZIP file (i.e. `cd ~/Orten.io/assignment-1-todo-list`
+or `cd /c/src/assignment-1-todo-list`). Once you're in that directory and run the `ls` command, you should
+see something like this:
+
+```text
+README.md	 content-base	design.png	package-lock.json	package.json
 ```
 
-When you visit [http://localhost:8080](http://localhost:8080) in chrome (or whatever internet
-browser you prefer) you'll find the files placed in `content-base`.
+To install the web server, run the command `npm install` (you only need to do this once). It's important that
+you're in the *assignment-1-todo-list* directory when you do this or it won't work. Then, to run the
+web server, run the command `npm run start` (and same thing here, it's important you're in the
+*assignment-1-todo-list* directory). Then you should see something like this:
 
-## Assets
+```text
+> assignment-1-todo-list@1.0.0 start /Users/johan/dev/orten/assignment-1-todo-list
+> http-server ./content-base
 
-Colors:
+Starting up http-server, serving ./content-base
+Available on:
+  http://127.0.0.1:8080
+  http://172.20.10.2:8080
+Hit CTRL-C to stop the server
+```
 
-- Background grey/blue: `#475E67`
+You just created your first web server!
+
+Now, if you go to [http://localhost:8080](http://localhost:8080) in your browser you'll see a web page. That's
+what your web server sends to your browser. The web server lists the files you place in the directory `content-base`,
+meaning that if you place more files there they'll show up.
+
+### Adding your own web page
+
+The web server looks for a file called `index.html` before listing the files, so if you create a file
+called `index.html` that will be shown instead - and that's exactly what we want to do.
+
+Create a file called `index.html` in the directory `content-base` and add this HTML content:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo list</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  Your site goes here
+  <script src="/app.js"></script>
+</body>
+</html>
+```
+
+This is where you should build the HTML content of the todo list. Now, if you reload the page at
+[http://localhost:8080](http://localhost:8080) you should see *Your site goes here*.
+
+### Adding styling
+
+To add styling, create a file called *style.css* in the directory *content-base*. Here you can
+write the CSS for the HTML in *index.html*. Because we linked *style.css* with
+`<link rel="stylesheet" href="/style.css">` the css you add in *style.css* will affect the HTML
+contents of *index.html*.
+
+For example, to change the background color of the whole page to the gray/blue color, add this
+to your css file:
+
+```css
+body {
+  background-color: #475E67;
+}
+```
+
+### Adding JavaScript
+
+All JavaScript should go into a file called *app.js*. Create that file. Just like the CSS file,
+it's linked to *index.html*, but with the script tag right before `</body>`. For example, to add
+an onclick event to the *"Clear all"* button that removes all tasks, add the following to
+*index.html* and *app.js*. Note the `id="..."` and `document.getElementById('...')`. They're
+used for identifying and getting the HTML elements in JavaScript.
+
+#### index.html
+
+```html
+<a href="#" id="clear-all">Clear all</a>
+
+<ul id="task-list">
+  <li>A task</li>
+  <li>Another task</li>
+</ul>
+```
+
+#### app.js
+
+```js
+document.getElementById('clear-all').onclick = function (event) {
+  event.preventDefault(); // Prevents the link from redirecting the user to "#"
+  document.getElementById('task-list').innerHTML = ''; // Clears all tasks
+}
+```
+
+That's the setup, now it's your turn to create the HTML, CSS and JavaScript to make it look like the design
+and behave as expected. Google will definitely become your best friend, but if that's not enough you can
+always reach us at [emil@orten.io](mailto:emil@orten.io) and [johan@orten.io](mailto:johan@orten.io).
+
+## Colors and fonts
+
+**Colors:**
+
+- Background gray/blue: `#475E67`
 - Add button green: `#31D500`
 - "Clear all" text red: `#C75959`
-- Borders & "Add another task" placeholder grey: `#95989A`
+- Borders & "Add another task" placeholder gray: `#95989A`
 
 **Font**: "Arial, sans-serif"
 
