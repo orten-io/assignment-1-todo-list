@@ -58,7 +58,7 @@ Create a file called `index.html` in the directory `content-base` and add this H
 </head>
 <body>
   Your site goes here
-<script src="/app.js"></script>
+  <script src="/app.js"></script>
 </body>
 </html>
 ```
@@ -73,18 +73,55 @@ write the CSS for the HTML in *index.html*. Because we linked *style.css* with
 `<link rel="stylesheet" href="/style.css">` the css you add in *style.css* will affect the HTML
 contents of *index.html*.
 
-That's the setup, now it's your turn to create the HTML and CSS to make it look like the design.
-Google will definitely become your best friend, but if that's not enough you can always reach us at
-[emil@orten.io](mailto:emil@orten.io) and [johan@orten.io](mailto:johan@orten.io).
+For example, to change the background color of the whole page to the gray/blue color, add this
+to your css file:
+
+```css
+body {
+  background-color: #475E67;
+}
+```
+
+### Adding JavaScript
+
+All JavaScript should go into a file called *app.js*. Create that file. Just like the CSS file,
+it's linked to *index.html*, but with the script tag right before `</body>`. For example, to add
+an onclick event to the *"Clear all"* button that removes all tasks, add the following to
+*index.html* and *app.js*. Note the `id="..."` and `document.getElementById('...')`. They're
+used for identifying and getting the HTML elements in JavaScript.
+
+#### index.html
+
+```html
+<a href="#" id="clear-all">Clear all</a>
+
+<ul id="task-list">
+  <li>A task</li>
+  <li>Another task</li>
+</ul>
+```
+
+#### app.js
+
+```js
+document.getElementById('clear-all').onclick = function (event) {
+  event.preventDefault(); // Prevents the link from redirecting the user to "#"
+  document.getElementById('task-list').innerHTML = ''; // Clears all tasks
+}
+```
+
+That's the setup, now it's your turn to create the HTML, CSS and JavaScript to make it look like the design
+and behave as expected. Google will definitely become your best friend, but if that's not enough you can
+always reach us at [emil@orten.io](mailto:emil@orten.io) and [johan@orten.io](mailto:johan@orten.io).
 
 ## Colors and fonts
 
-Colors:
+**Colors:**
 
-- Background grey/blue: `#475E67`
+- Background gray/blue: `#475E67`
 - Add button green: `#31D500`
 - "Clear all" text red: `#C75959`
-- Borders & "Add another task" placeholder grey: `#95989A`
+- Borders & "Add another task" placeholder gray: `#95989A`
 
 **Font**: "Arial, sans-serif"
 
